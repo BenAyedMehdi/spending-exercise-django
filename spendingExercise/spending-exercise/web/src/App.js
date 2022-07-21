@@ -10,7 +10,6 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [sorting, setSorting] = useState("-date");
-  const [showing, setShowing] = useState("ALL");
 
   useEffect(() => {
      fetchSpendings();
@@ -76,7 +75,7 @@ export default function App() {
 
   function sortBy(choice){
     setSorting(choice)
-    setSpendings(spendings.sort((a, b)=>{
+    setSpendingsToShow (spendings.sort((a, b)=>{
       if(choice==='-date'){
         return b.spent_at.localeCompare(a.spent_at)
       }
@@ -93,6 +92,7 @@ export default function App() {
     }));
     setSpendingsToShow(spendings)
   }
+  
   function compareSpendings(a,b){
     if(a.currency === b.currency){
       return a.amount - b.amount;
@@ -104,7 +104,6 @@ export default function App() {
   }
 
   function show(choice){
-    console.log(choice)
     setSpendingsToShow(spendings.filter((a)=>{
       if(choice==='ALL'){
         return a

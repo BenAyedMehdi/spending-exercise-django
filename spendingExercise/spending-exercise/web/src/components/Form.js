@@ -22,7 +22,6 @@ export default function Form({addSpending}) {
   function onSubmit(e) {
     e.preventDefault();
     console.log("submitted")
-    
     if (!state.amount) {
       alert('Please add an amount')
       return
@@ -34,15 +33,12 @@ export default function Form({addSpending}) {
     };
 
     addSpending(spending)
-
     setState({
       description: '',
       amount: 0,
       currency: 'USD',
     });
-
   };
-
 
   return (
     <>
